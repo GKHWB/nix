@@ -226,6 +226,7 @@
     racket
     pomodoro-gtk
     cargo
+    rustc
     tutanota-desktop
   #  wget
   ];
