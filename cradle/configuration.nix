@@ -106,6 +106,12 @@
   # Enable GDM
   services.xserver.displayManager.gdm.enable = true;
 
+  # Enable GNOME Keyring
+  services.gnome.gnome-keyring.enable = true;
+
+  # Enable Seahorse
+  programs.seahorse.enable = true;
+
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
@@ -220,6 +226,7 @@
     racket
     pomodoro-gtk
     cargo
+    tutanota-desktop
   #  wget
   ];
 
