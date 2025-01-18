@@ -9,16 +9,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "jellyfin-tui";
-  version = "v1.0.5";
+  version = "v1.0.6";
 
   src = fetchFromGitHub {
     owner = "dhonus";
     repo = pname;
     rev = version;
-    hash = "sha256-dME3oM3k5TGjN8S/93Crt3vw8+KjZWivkVzg+eqwfe4=";
+    hash = "sha256-IjXfOYoqzNiyZVbY+J9GSjF7dZ4ZxmlifM5EApEODOo=";
   };
 
-  cargoHash = "sha256-hogGwkaNDE4yPYgmmG9wfDPlNTUaVqlJzCW31lrX6Ic=";
+  cargoHash = "sha256-tOt92y7LNbTvY2NNVm4GwC+XdJe1sn4T49ByS10G/cs=";
 
   meta = {
     description = "tui music client for jellyfin";

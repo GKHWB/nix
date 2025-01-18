@@ -162,6 +162,7 @@
         wonderdraft
         (callPackage ../misc/jellyfin-tui.nix {})
 	playerctl
+	jellyfin-media-player
       ];
     };
     studying = {
@@ -218,6 +219,7 @@
     obsidian
     racket
     pomodoro-gtk
+    cargo
   #  wget
   ];
 
