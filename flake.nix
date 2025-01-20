@@ -16,6 +16,11 @@
 			url = "github:nix-community/nixvim";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		zen-browser = {
+			url = "github:youwen5/zen-browser-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, nixvim, ... }@inputs:
@@ -42,6 +47,9 @@
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			];
+			specialArgs = {
+			inherit inputs;
+			};
 		};
 	};
 
