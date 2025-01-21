@@ -195,6 +195,9 @@
   # Install dconf
   programs.dconf.enable = true;
 
+  # Enable flatpak
+  services.flatpak.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

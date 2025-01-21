@@ -7,7 +7,7 @@
 			"$terminal" = "kitty";
 			"$fileManager" = "thunar";
 			"$menu" = "wofi --show drun";
-			"$browser" = "librewolf";
+			"$browser" = "zen";
 
 			exec-once = [ 
 				"waybar &"
