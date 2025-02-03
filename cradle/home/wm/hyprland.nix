@@ -131,6 +131,7 @@
 				"$mainMod CTRL SHIFT ALT, S, exec, hyprshot -m output --clipboard-only"
 				"$mainMod, F, exec, freetube --disable-gpu"
 				"$mainMod, L, exec, hyprlock"
+				"$mainMod SHIFT, J, exec, $terminal -e jellyfin-tui"
 				"$mainMod, left, movefocus, l"
 				"$mainMod, right, movefocus, r"
 				"$mainMod, up, movefocus, u"
