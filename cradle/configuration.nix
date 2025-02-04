@@ -217,7 +217,7 @@
     tealdeer
     btop
     nvtopPackages.full
-    freetube
+    (callPackage ../misc/freetube/package.nix {})
     feh
     git
     killall
