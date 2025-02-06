@@ -10,6 +10,17 @@
       extensions.file-browser.enable = true;
     };
 
+    plugins.nvim-tree = {
+      enable = true;
+    };
+
+    plugins.cmp = {
+      enable = true;
+      settings.sources = [
+        { name = "nvim_lsp"; }
+      ];
+    };
+
     plugins.lsp = {
       enable = true;
 
@@ -27,5 +38,14 @@
     opts = {
        number = true;
     };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<S-F>";
+        action = ":Telescope file_browser<CR>";
+      }
+    ];
   };
+
 }
