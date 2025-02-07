@@ -64,18 +64,23 @@
        number = true;
     };
 
+    globals.mapleader = " ";
     keymaps = [
       {
         mode = "n";
-        key = "<S-F>";
+        key = "<leader>f";
         action = ":Telescope file_browser<CR>";
       }
       {
         mode = "n";
-	key = "<S-T>";
+	key = "<leader>t";
 	action = ":NvimTreeToggle<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>lg";
+	action = ":LazyGit<CR>";
       }
     ];
   };
-
 }
