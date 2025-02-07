@@ -16,9 +16,30 @@
 
     plugins.cmp = {
       enable = true;
-      settings.sources = [
-        { name = "nvim_lsp"; }
-      ];
+      settings = {
+        sources = [
+          { name = "nvim_lsp"; }
+	  { name = "vsnip"; }
+        ];
+        snippet.expand = ''
+          function(args)
+	    vim.fn["vsnip#anonymous"](args.body)
+	  end
+        '';
+	mapping = {
+	  "<C-j>" = "cmp.mapping.select_next_item()";
+	  "<C-k>" = "cmp.mapping.select_prev_item()";
+	  "<C-Space>" = "cmp.mapping.complete()";
+	};
+      };
+    };
+
+    plugins.cmp-nvim-lsp = {
+      enable = true;
+    };
+
+    plugins.cmp-vsnip = {
+      enable = true;
     };
 
     plugins.lsp = {
@@ -35,6 +56,10 @@
       };
     };
 
+    plugins.lazygit = {
+      enable = true;
+    };
+
     opts = {
        number = true;
     };
@@ -44,6 +69,11 @@
         mode = "n";
         key = "<S-F>";
         action = ":Telescope file_browser<CR>";
+      }
+      {
+        mode = "n";
+	key = "<S-T>";
+	action = ":NvimTreeToggle<CR>";
       }
     ];
   };
