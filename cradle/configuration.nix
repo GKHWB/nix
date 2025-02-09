@@ -232,6 +232,7 @@
     cargo
     rustc
     tutanota-desktop
+    lazygit
   #  wget
   ];
 
