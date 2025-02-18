@@ -58,6 +58,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Toggle firewall
+  networking.firewall.enable = false;
+
   # Enable SearXNG
   services.searx = {
     enable = true;
@@ -235,6 +238,7 @@
     tutanota-desktop
     lazygit
     gparted
+    tmux
   #  wget
   ];
 
