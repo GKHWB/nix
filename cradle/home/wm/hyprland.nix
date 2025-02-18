@@ -14,6 +14,7 @@
 				"fcitx5"
 				"swww-daemon &"
 				"swww img -t grow /home/alter/nix/cradle/wallpapersymlink &"
+				"systemctl --user start hyprpolkitagent"
 			];
 
 			env = [ 

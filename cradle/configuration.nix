@@ -212,6 +212,7 @@
     swww
     waypaper
     hyprshot
+    hyprpolkitagent
     xfce.thunar
     pavucontrol
     tealdeer
@@ -233,6 +234,7 @@
     rustc
     tutanota-desktop
     lazygit
+    gparted
   #  wget
   ];
 
