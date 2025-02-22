@@ -13,6 +13,7 @@
 		enable = true;
 		settings = {
 			background_blur = 1;
+			shell = "fish";
 		};
 	};
 
@@ -20,6 +21,7 @@
 	gtk.enable = true;
 
 	imports = [
+		./fish.nix
 		./bash.nix
 		./wm/bundle.nix
 	];
