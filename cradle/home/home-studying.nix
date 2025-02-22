@@ -19,7 +19,7 @@
 	gtk.enable = true;
 
 	imports = [
-		./bash.nix
+		./shells/bundle.nix
 		./wm/bundle.nix
 	];
 
