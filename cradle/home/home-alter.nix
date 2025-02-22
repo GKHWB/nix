@@ -21,8 +21,7 @@
 	gtk.enable = true;
 
 	imports = [
-		./fish.nix
-		./bash.nix
+		./shells/bundle.nix
 		./wm/bundle.nix
 	];
 
