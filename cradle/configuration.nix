@@ -228,7 +228,6 @@
     unzip
     librewolf-bin
     inputs.zen-browser.packages.${pkgs.system}.default
-    firefox
     vlc
     obsidian
     racket
