@@ -227,7 +227,7 @@
     killall
     unzip
     librewolf-bin
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.twilight
     vlc
     obsidian
     racket
