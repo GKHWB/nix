@@ -7,6 +7,7 @@
       hotkey-overlay.skip-at-startup = true;
       layout = {
         gaps = 16;
+	default-column-width = {};
       };
       spawn-at-startup =
       [
