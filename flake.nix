@@ -21,9 +21,11 @@
 			url = "github:0xc000022070/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		niri.url = "github:sodiboo/niri-flake";
 	};
 
-	outputs = { nixpkgs, home-manager, stylix, nixvim, ... }@inputs:
+	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, ... }@inputs:
 		let
 			system = "x86_64-linux";
 		in {
@@ -46,9 +48,11 @@
 			home-manager.nixosModules.home-manager
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
+			niri.nixosModules.niri
 			];
 			specialArgs = {
 			inherit inputs;
+			inherit niri;
 			};
 		};
 	};

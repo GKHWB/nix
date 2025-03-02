@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, niri, inputs, ... }:
 
 {
   imports =
@@ -115,15 +115,12 @@
   # Enable Seahorse
   programs.seahorse.enable = true;
 
-  # Enable Hyprland
-  programs.hyprland = {
+  # Enable Niri
+  nixpkgs.overlays = [ niri.overlays.niri ];
+  programs.niri = {
     enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
+    package = pkgs.niri-stable;
   };
-
-  # Enable PAM
-  security.pam.services.hyprlock = {};
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -214,8 +211,6 @@
     wofi
     swww
     waypaper
-    hyprshot
-    hyprpolkitagent
     xfce.thunar
     pavucontrol
     tealdeer
