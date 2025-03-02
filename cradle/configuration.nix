@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       # Include Nixvim config
       ../misc/nixvim.nix
+      #Include Niri nixos module
+      niri.nixosModules.niri
     ];
 
   # Nvidia
@@ -233,6 +235,7 @@
     lazygit
     gparted
     tmux
+    xwayland-satellite
   #  wget
   ];
 

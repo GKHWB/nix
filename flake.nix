@@ -48,7 +48,6 @@
 			home-manager.nixosModules.home-manager
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
-			niri.nixosModules.niri
 			];
 			specialArgs = {
 			inherit inputs;
