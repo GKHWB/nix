@@ -49,10 +49,16 @@
         matches = [{ app-id = "^vesktop$"; }];
 	default-column-width = { proportion = 1.; };
       }
+      {
+        matches = [{ app-id = "^zen-twilight$"; }];
+	default-column-width = { proportion = 2. / 3.; };
+      }
       ];
       binds = with config.lib.niri.actions; {
         "Mod+Q".action.spawn = "kitty";
         "Mod+D".action.spawn = [ "wofi" "--show" "drun" ];
+	"Mod+B".action.spawn = "zen";
+	"Mod+E".action.spawn = "thunar";
 	"Mod+Ctrl+L".action.spawn = "hyprlock";
 	"Mod+R".action = switch-preset-column-width;
         "Mod+C".action = close-window;
