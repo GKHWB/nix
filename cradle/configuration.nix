@@ -117,6 +117,9 @@
   # Enable Seahorse
   programs.seahorse.enable = true;
 
+  # Configure PAM for hyprlock
+  security.pam.services.hyprlock = {};
+
   # Enable Niri
   nixpkgs.overlays = [ niri.overlays.niri ];
   programs.niri = {
@@ -213,6 +216,7 @@
     wofi
     swww
     waypaper
+    hyprlock
     xfce.thunar
     pavucontrol
     tealdeer

@@ -53,6 +53,7 @@
       binds = with config.lib.niri.actions; {
         "Mod+Q".action.spawn = "kitty";
         "Mod+D".action.spawn = [ "wofi" "--show" "drun" ];
+	"Mod+Ctrl+L".action.spawn = "hyprlock";
 	"Mod+R".action = switch-preset-column-width;
         "Mod+C".action = close-window;
         "Mod+M".action = quit;
