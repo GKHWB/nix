@@ -60,7 +60,7 @@
 	"Mod+B".action.spawn = "zen";
 	"Mod+E".action.spawn = [ "kitty" "-e" "yazi" ];
 	"Mod+Ctrl+L".action.spawn = "hyprlock";
-	"Mod+Shift+Del".action.spawn = [ "shutdown" "now" ];
+	"Mod+Shift+Delete".action.spawn = [ "shutdown" "now" ];
 	"Mod+R".action = switch-preset-column-width;
         "Mod+C".action = close-window;
         "Mod+M".action = quit;
