@@ -60,10 +60,14 @@
 	"Mod+B".action.spawn = "zen";
 	"Mod+E".action.spawn = [ "kitty" "-e" "yazi" ];
 	"Mod+Ctrl+L".action.spawn = "hyprlock";
+	"Mod+Shift+Del".action.spawn = [ "shutdown" "now" ];
 	"Mod+R".action = switch-preset-column-width;
         "Mod+C".action = close-window;
         "Mod+M".action = quit;
         "Mod+Shift+Slash".action = show-hotkey-overlay;
+
+	"Mod+S".action = screenshot-window;
+	"Mod+Shift+S".action = screenshot-screen;
 
         "Mod+H".action = focus-column-left;
 	"Mod+L".action = focus-column-right;
