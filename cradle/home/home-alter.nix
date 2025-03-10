@@ -3,7 +3,6 @@
 		username = "alter";
 		homeDirectory = "/home/alter";
 		packages = [
-			pkgs.xfce.thunar
 		];
 		stateVersion = "24.11";
 	};

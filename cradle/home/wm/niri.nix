@@ -15,6 +15,9 @@
 	];
 	default-column-width = { proportion = 1. / 3.; };
       };
+      cursor = {
+        hide-after-inactive-ms = 5000;
+      };
       spawn-at-startup =
       [
       {
@@ -59,6 +62,7 @@
         "Mod+D".action.spawn = [ "wofi" "--show" "drun" ];
 	"Mod+B".action.spawn = "zen";
 	"Mod+E".action.spawn = [ "kitty" "-e" "yazi" ];
+	"Mod+F".action.spawn = "freetube";
 	"Mod+Ctrl+L".action.spawn = "hyprlock";
 	"Mod+Shift+Delete".action.spawn = [ "shutdown" "now" ];
 	"Mod+R".action = switch-preset-column-width;
