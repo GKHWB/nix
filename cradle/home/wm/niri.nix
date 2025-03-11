@@ -71,7 +71,7 @@
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
 	"Mod+S".action = screenshot-window;
-	"Mod+Shift+S".action = screenshot-screen;
+	#"Mod+Shift+S".action = screenshot-screen;
 
         "Mod+H".action = focus-column-left;
 	"Mod+L".action = focus-column-right;
