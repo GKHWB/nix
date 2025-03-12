@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   # Nixvim config
   programs.nixvim = {
@@ -62,7 +63,16 @@
 
     opts = {
        number = true;
+       relativenumber = true;
     };
+
+    plugins.twilight.enable = true;
+
+    plugins.zen-mode.enable = true;
+
+    extraPlugins = with pkgs.vimPlugins; [
+    vim-pencil
+    ];
 
     globals.mapleader = " ";
     keymaps = [
@@ -80,6 +90,21 @@
         mode = "n";
 	key = "<leader>lg";
 	action = ":LazyGit<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>p";
+	action = ":set spell | set norelativenumber | set nonumber | PencilSoft<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>c";
+	action = ":set nospell | set relativenumber | set number | PencilOff<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>z";
+	action = ":ZenMode<CR>";
       }
     ];
   };
