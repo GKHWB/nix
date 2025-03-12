@@ -221,6 +221,7 @@
     pavucontrol
     tealdeer
     btop
+    ripgrep
     nvtopPackages.full
     freetube
     feh

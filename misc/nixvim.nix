@@ -94,12 +94,12 @@
       {
         mode = "n";
 	key = "<leader>p";
-	action = ":set spell | set norelativenumber | set nonumber | PencilSoft<CR>";
+	action = ":set spell | PencilSoft<CR>";
       }
       {
         mode = "n";
 	key = "<leader>c";
-	action = ":set nospell | set relativenumber | set number | PencilOff<CR>";
+	action = ":set nospell | PencilOff<CR>";
       }
       {
         mode = "n";
