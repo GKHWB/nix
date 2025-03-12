@@ -222,6 +222,7 @@
     tealdeer
     btop
     ripgrep
+    mpv
     nvtopPackages.full
     freetube
     feh
