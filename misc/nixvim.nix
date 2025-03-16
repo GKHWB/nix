@@ -4,6 +4,8 @@
   programs.nixvim = {
     enable = true;
 
+    plugins.airline.enable = true;
+
     plugins.web-devicons.enable = true;
 
     plugins.telescope = {
@@ -61,6 +63,8 @@
       enable = true;
     };
 
+    plugins.render-markdown.enable = true;
+
     opts = {
        number = true;
        relativenumber = true;
@@ -72,6 +76,7 @@
 
     extraPlugins = with pkgs.vimPlugins; [
     vim-pencil
+    wiki-vim
     ];
 
     globals.mapleader = " ";
