@@ -4,8 +4,6 @@
   programs.nixvim = {
     enable = true;
 
-    plugins.airline.enable = true;
-
     plugins.web-devicons.enable = true;
 
     plugins.telescope = {
