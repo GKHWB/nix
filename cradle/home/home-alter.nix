@@ -19,6 +19,14 @@
 		};
 	};
 
+        programs.mpv = {
+	  enable = true;
+	  config = {
+	    volume = 50;
+	    cache = "yes";
+	  };
+	};
+
 	services.swaync.enable = true;
 	gtk.enable = true;
 

@@ -174,6 +174,7 @@
         (callPackage ../misc/jellyfin-tui.nix {})
 	playerctl
 	jellyfin-media-player
+	godot
       ];
     };
     studying = {
