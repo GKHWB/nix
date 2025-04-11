@@ -4,6 +4,16 @@
   programs.nixvim = {
     enable = true;
 
+    autoCmd =
+    [
+    {
+      command = "startinsert";
+      event = [
+      "TermOpen"
+      ];
+    }
+    ];
+
     plugins.web-devicons.enable = true;
 
     plugins.telescope = {
@@ -48,6 +58,10 @@
 
       servers = {
         nixd.enable = true;
+
+	ccls = {
+	  enable = true;
+	};
 
 	rust_analyzer = {
 	  enable = true;
@@ -108,6 +122,11 @@
         mode = "n";
 	key = "<leader>z";
 	action = ":ZenMode<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>ot";
+	action = ":term fish<CR>";
       }
     ];
   };

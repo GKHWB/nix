@@ -55,6 +55,10 @@
         matches = [{ app-id = "^zen-twilight$"; }];
 	default-column-width = { proportion = 2. / 3.; };
       }
+      {
+        matches = [{ app-id = "^Godot$"; }];
+	default-column-width = { proportion = 1.; };
+      }
       ];
       binds = with config.lib.niri.actions; {
         "Mod+Q".action.spawn = "kitty";
@@ -69,8 +73,7 @@
         "Mod+M".action = quit;
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
-	"Mod+S".action = screenshot-window;
-	#"Mod+Shift+S".action = screenshot-screen;
+	"Mod+S".action = screenshot;
 
         "Mod+H".action = focus-column-left;
 	"Mod+L".action = focus-column-right;
@@ -91,8 +94,8 @@
 	"Mod+BracketLeft".action = consume-or-expel-window-left;
 	"Mod+BracketRight".action = consume-or-expel-window-right;
 
-	"Mod+V".action = toggle-window-floating;
-	"Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+	"Mod+Shift+V".action = toggle-window-floating;
+	"Mod+V".action = switch-focus-between-floating-and-tiling;
       };
     };
   };
