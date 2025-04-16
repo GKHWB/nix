@@ -7,7 +7,7 @@
     autoCmd =
     [
     {
-      command = "startinsert";
+      command = "setlocal nonumber | setlocal norelativenumber | startinsert";
       event = [
       "TermOpen"
       ];
@@ -100,6 +100,11 @@
       }
       {
         mode = "n";
+	key = "<leader>b";
+	action = ":Telescope buffers<CR>";
+      }
+      {
+        mode = "n";
 	key = "<leader>t";
 	action = ":NvimTreeToggle<CR>";
       }
@@ -126,7 +131,7 @@
       {
         mode = "n";
 	key = "<leader>ot";
-	action = ":term fish<CR>";
+	action = ":vsplit +term\\ fish<CR>";
       }
     ];
   };
