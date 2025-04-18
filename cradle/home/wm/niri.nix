@@ -61,7 +61,7 @@
       }
       ];
       binds = with config.lib.niri.actions; {
-        "Mod+Q".action.spawn = "kitty";
+        "Mod+Q".action.spawn = ["kitty" "-e" "tmux" "attach"];
         "Mod+D".action.spawn = [ "wofi" "--show" "drun" ];
 	"Mod+B".action.spawn = "zen";
 	"Mod+E".action.spawn = [ "kitty" "-e" "yazi" ];

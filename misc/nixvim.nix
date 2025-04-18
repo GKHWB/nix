@@ -14,6 +14,10 @@
     }
     ];
 
+    diagnostics = {
+      virtual_text = true;
+    };
+
     plugins.web-devicons.enable = true;
 
     plugins.telescope = {
@@ -132,6 +136,11 @@
         mode = "n";
 	key = "<leader>ot";
 	action = ":vsplit +term\\ fish<CR>";
+      }
+      {
+        mode = "n";
+	key = "<leader>h";
+	action = ":noh<CR>";
       }
     ];
   };
