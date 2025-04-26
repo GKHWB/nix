@@ -12,6 +12,18 @@
       "TermOpen"
       ];
     }
+    {
+      command = "set softtabstop=2 | set shiftwidth=2 | set noexpandtab";
+      event = [
+      "BufEnter"
+      "BufWinEnter"
+      ];
+      pattern = [
+      "*.c"
+      "*.h"
+      "*.nix"
+      ];
+    }
     ];
 
     diagnostics = {
