@@ -241,6 +241,9 @@
     pomodoro-gtk
     cargo
     rustc
+    clang
+    man-pages
+    man-pages-posix
     tutanota-desktop
     lazygit
     gparted
