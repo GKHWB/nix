@@ -24,6 +24,16 @@
       "*.nix"
       ];
     }
+    {
+      command = "set softtabstop=4 | set shiftwidth=4 | set noexpandtab | set spell | PencilSoft";
+      event = [
+      "BufEnter"
+      "BufWinEnter"
+      ];
+      pattern = [
+      "*.txt"
+      ];
+    }
     ];
 
     diagnostics = {
