@@ -249,6 +249,7 @@
     gparted
     tmux
     xwayland-satellite
+    gamescope
   #  wget
   ];
 
