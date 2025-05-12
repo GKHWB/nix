@@ -75,6 +75,12 @@
 
 	"Mod+S".action = screenshot;
 
+	"Mod+O".action = toggle-overview;
+
+	"Mod+P".action = set-dynamic-cast-window;
+	"Mod+Shift+P".action = set-dynamic-cast-monitor;
+	"Mod+Ctrl+Shift+P".action = clear-dynamic-cast-target;
+
         "Mod+H".action = focus-column-left;
 	"Mod+L".action = focus-column-right;
 	"Mod+J".action = focus-window-or-workspace-down;
