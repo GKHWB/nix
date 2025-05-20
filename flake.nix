@@ -33,18 +33,22 @@
 		nixosConfigurations.amalgam = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [
-			./amalgam/configuration.nix
+			./amalgam-configuration.nix
 			home-manager.nixosModules.home-manager
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			];
+			specialArgs = {
+			inherit inputs;
+			inherit niri;
+			};
 		};
 
 		# PC Config
 		nixosConfigurations.cradle = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [
-			./cradle/configuration.nix
+			./cradle-configuration.nix
 			home-manager.nixosModules.home-manager
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim

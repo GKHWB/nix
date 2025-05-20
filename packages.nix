@@ -1,0 +1,49 @@
+{ pkgs, inputs, ...}:
+
+{
+  environment.systemPackages = with pkgs; [
+    fd
+    dust
+    egl-wayland
+    pavucontrol
+    tealdeer
+    btop
+    ripgrep
+    mpv
+    freetube
+    feh
+    git
+    killall
+    unzip
+    librewolf-bin
+    inputs.zen-browser.packages.${pkgs.system}.twilight
+    vlc
+    obsidian
+    racket
+    pomodoro-gtk
+    cargo
+    rustc
+    clang
+    man-pages
+    man-pages-posix
+    tutanota-desktop
+    lazygit
+    gparted
+    tmux
+    xwayland-satellite
+    vesktop
+    fastfetch
+    cbonsai
+    krita
+    cava
+    wonderdraft
+    (callPackage ./misc/jellyfin-tui.nix {})
+    playerctl
+    jellyfin-media-player
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+  ];
+
+}

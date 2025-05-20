@@ -7,41 +7,20 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configs/cradle-hardware.nix
       # Include Nixvim config
-      ../misc/nixvim.nix
+      ./misc/nixvim.nix
       #Include Niri nixos module
       niri.nixosModules.niri
+      #Various config stuff
+      ./searx.nix
+      ./bluetooth.nix
+      ./home-manager.nix
+      ./input-method.nix
+      ./wm-bundle.nix
+      ./secrets.nix
+      ./packages.nix
     ];
-
-  # Nvidia
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware = {
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      open = true;
-      nvidiaSettings = true;
-    };
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-	vaapiVdpau
-	libvdpau-va-gl
-      ];
-    };
-  };
-
-  # Environment variables
-  environment.variables = {
-    GBM_BACKEND = "nvidia-drm";
-    LIBVA_DRIVER_NAME = "nvidia";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
-
-  # Hint Electron to run in Wayland
-  #environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -63,21 +42,6 @@
   # Toggle firewall
   networking.firewall.enable = false;
 
-  # Enable SearXNG
-  services.searx = {
-    enable = true;
-    redisCreateLocally = true;
-    settings.server.secret_key = "test";
-    settings.server.port = "8080";
-    settings.server.bind_address = "0.0.0.0";
-  };
-
-  # Bluetooth stuff
-  hardware.bluetooth = {
-    enable = true;
-  };
-  services.blueman.enable = true;
-
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -96,36 +60,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      addons = with pkgs; [ fcitx5-anthy ];
-      waylandFrontend = true;
-    };
-  };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable GDM
-  services.xserver.displayManager.gdm.enable = true;
-
-  # Enable GNOME Keyring
-  services.gnome.gnome-keyring.enable = true;
-
-  # Enable Seahorse
-  programs.seahorse.enable = true;
-
-  # Configure PAM for hyprlock
-  security.pam.services.hyprlock = {};
-
-  # Enable Niri
-  nixpkgs.overlays = [ niri.overlays.niri ];
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -156,48 +92,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define user accounts. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = true;
-  users.users = {
-    alter = {
-      isNormalUser = true;
-      description = "alter";
-      homeMode = "750";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
-        vesktop
-        fastfetch
-        cbonsai
-	krita
-	cava
-        wonderdraft
-        (callPackage ../misc/jellyfin-tui.nix {})
-	playerctl
-	jellyfin-media-player
-	godot
-      ];
-    };
-    studying = {
-      isNormalUser = true;
-      description = "studying";
-      homeMode = "750";
-      initialPassword = "password";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
-      ];
-    };
-  };
-
-  home-manager = {
-     users = {
-        "alter" = import ./home/home-alter.nix;
-	"studying" = import ./home/home-studying.nix;
-     };
-     sharedModules = [{
-       stylix.targets.hyprland.hyprpaper.enable = false;
-     }];
-  };
-
   # Install dconf
   programs.dconf.enable = true;
 
@@ -207,67 +101,14 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Cradle specific packages
   environment.systemPackages = with pkgs; [
-    fd
-    dust
-    egl-wayland
-    waybar
-    wofi
-    swww
-    waypaper
-    hyprlock
-    nautilus
-    pavucontrol
-    tealdeer
-    btop
-    ripgrep
-    mpv
     nvtopPackages.full
-    freetube
-    feh
-    git
-    killall
-    unzip
-    librewolf-bin
-    inputs.zen-browser.packages.${pkgs.system}.twilight
-    vlc
-    obsidian
-    racket
-    pomodoro-gtk
-    cargo
-    rustc
-    clang
-    man-pages
-    man-pages-posix
-    tutanota-desktop
-    lazygit
-    gparted
-    tmux
-    xwayland-satellite
     gamescope
-  #  wget
+    godot
   ];
 
   programs.steam.enable = true;
-
-  fonts.packages = with pkgs; [
-    font-awesome
-  ];
-
-  # Stylix Config
-  stylix = {
-    enable = true;
-    targets.grub.useImage = true;
-    image = ../Wallpapers/blackandwhitegirl.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-venom.yaml";
-    opacity.terminal = 0.75;
-    cursor.name = "Quintom_Ink";
-    cursor.package = pkgs.quintom-cursor-theme;
-    cursor.size = 16;
-  };
 
   # Automatic garbage collection
   nix.gc = {

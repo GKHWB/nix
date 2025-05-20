@@ -14,7 +14,6 @@
 		  "EDITOR" = "nvim";
 		};
 		settings = {
-			background_blur = 1;
 			shell = "fish";
 		};
 	};

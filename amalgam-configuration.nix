@@ -2,14 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, niri, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configs/cradle-hardware.nix
       # Include Nixvim config
-      ../misc/nixvim.nix
+      ./misc/nixvim.nix
+      #Include Niri nixos module
+      niri.nixosModules.niri
+      #Various config stuff
+      ./searx.nix
+      ./bluetooth.nix
+      ./home-manager.nix
+      ./input-method.nix
+      ./wm-bundle.nix
+      ./secrets.nix
+      ./packages.nix
     ];
 
   # Bootloader.
@@ -29,15 +39,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Bluetooth stuff
-  hardware.bluetooth = {
-    enable = true;
-  };
-  services.blueman.enable = true;
-
-  # Enable sshd
-  #services.sshd.enable = true;
-
+  # Toggle firewall
+  networking.firewall.enable = true;
+  
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -61,14 +65,6 @@
 
   # Enable GDM
   services.xserver.displayManager.gdm.enable = true;
-
-  # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-  programs.hyprlock.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -99,67 +95,18 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alter = {
-    isNormalUser = true;
-    description = "alter";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
-
-  home-manager = {
-     users = {
-        "alter" = import ./home/home.nix;
-     };
-     sharedModules = [{
-       stylix.targets.hyprland.hyprpaper.enable = false;
-     }];
-  };
-
   # Install dconf
   programs.dconf.enable = true;
+
+  # Enable flatpak
+  services.flatpak.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Amalgam specific packages
   environment.systemPackages = with pkgs; [
-    fd
-    dust
-    vesktop
-    waybar
-    wofi
-    swww
-    waypaper
-    hyprshot
-    tealdeer
-    fastfetch
-    btop
-    freetube
-    feh
-    cbonsai
-    git
-    killall
-    unzip
-    wonderdraft
-  #  wget
   ];
-
-  fonts.packages = with pkgs; [
-    font-awesome
-  ];
-
-  # Stylix Config
-  stylix = {
-    enable = true;
-    targets.grub.useImage = true;
-    image = ./wallpapersymlink;
-    polarity = "dark";
-    opacity.terminal = 0.75;
-  };
 
   # Automatic garbage collection
   nix.gc = {
@@ -179,13 +126,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  services.openssh.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
