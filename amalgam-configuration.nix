@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configs/cradle-hardware.nix
+      ./hardware-configs/amalgam-hardware.nix
       # Include Nixvim config
       ./misc/nixvim.nix
       #Include Niri nixos module
