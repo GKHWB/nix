@@ -15,6 +15,7 @@
       #Various config stuff
       ./searx.nix
       ./bluetooth.nix
+      ./users.nix
       ./home-manager.nix
       ./input-method.nix
       ./wm-bundle.nix
