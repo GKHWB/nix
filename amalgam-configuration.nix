@@ -18,7 +18,7 @@
     ./home-manager.nix
     ./input-method.nix
     ./wm-bundle.nix
-    ./secrets.nix
+    ./keyring.nix
     ./packages.nix
   ];
 
