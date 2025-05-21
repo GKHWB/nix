@@ -12,7 +12,6 @@
   environment.systemPackages = with pkgs; [
     waybar
     wofi
-    swww
     waypaper
     hyprlock
     nautilus
