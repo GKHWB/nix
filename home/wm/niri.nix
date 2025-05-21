@@ -32,6 +32,12 @@
 	];
       }
       {
+	command =
+	[
+	"swww img /home/alter/nix/Wallpapers/blackandwhitegirl.png"
+	];
+      }
+      {
         command =
 	[
 	"xwayland-satellite"
