@@ -19,7 +19,7 @@
         "alter" = import ./home/home-alter.nix;
      };
      sharedModules = [{
-       stylix.targets.hyprland.hyprpaper.enable = false;
+       #stylix.targets.hyprland.hyprpaper.enable = false;
      }];
   };
 }

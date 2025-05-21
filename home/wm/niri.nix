@@ -28,13 +28,7 @@
       {
         command =
 	[
-	"swww-daemon"
-	];
-      }
-      {
-	command =
-	[
-	"swww img /home/alter/nix/Wallpapers/blackandwhitegirl.png"
+	"hyprpaper"
 	];
       }
       {
