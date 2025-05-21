@@ -6,21 +6,21 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configs/amalgam-hardware.nix
-      # Include Nixvim config
-      ./misc/nixvim.nix
-      #Include Niri nixos module
-      niri.nixosModules.niri
-      #Various config stuff
-      ./searx.nix
-      ./bluetooth.nix
-      ./home-manager.nix
-      ./input-method.nix
-      ./wm-bundle.nix
-      ./secrets.nix
-      ./packages.nix
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configs/amalgam-hardware.nix
+    # Include Nixvim config
+    ./misc/nixvim.nix
+    #Include Niri nixos module
+    niri.nixosModules.niri
+    #Various config stuff
+    ./searx.nix
+    ./bluetooth.nix
+    ./home-manager.nix
+    ./input-method.nix
+    ./wm-bundle.nix
+    ./secrets.nix
+    ./packages.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
