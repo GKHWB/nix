@@ -7,7 +7,7 @@
     egl-wayland
     pavucontrol
     tealdeer
-    btop
+    htop
     ripgrep
     mpv
     freetube
