@@ -21,6 +21,7 @@
       ./wm-bundle.nix
       ./keyring.nix
       ./packages.nix
+      ./obs.nix
     ];
 
   # Bootloader.
