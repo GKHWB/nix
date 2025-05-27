@@ -24,6 +24,8 @@
       ./obs.nix
     ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -108,9 +110,15 @@
     nvtopPackages.full
     gamescope
     godot
+    lutris
   ];
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
 
   # Automatic garbage collection
   nix.gc = {
