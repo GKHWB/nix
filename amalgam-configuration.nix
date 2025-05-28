@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, niri, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -10,8 +10,6 @@
     ./hardware-configs/amalgam-hardware.nix
     # Include Nixvim config
     ./misc/nixvim.nix
-    #Include Niri nixos module
-    niri.nixosModules.niri
     #Various config stuff
     ./searx.nix
     ./bluetooth.nix
