@@ -108,17 +108,30 @@
   # Cradle specific packages
   environment.systemPackages = with pkgs; [
     nvtopPackages.full
-    gamescope
     godot
     lutris
   ];
 
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
+    extraPackages = with pkgs; [
+      xorg.libXcursor
+      xorg.libXi
+      xorg.libXinerama
+      xorg.libXScrnSaver
+      libpng
+      libpulseaudio
+      libvorbis
+      stdenv.cc.cc.lib
+      libkrb5
+      keyutils
+    ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
   };
+
 
   # Automatic garbage collection
   nix.gc = {
