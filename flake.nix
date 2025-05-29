@@ -22,6 +22,12 @@
 		};
 
 		niri.url = "github:sodiboo/niri-flake";
+
+		fht-compositor = {
+			url = "github:nferhat/fht-compositor";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.rust-overlay.follows = "";
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, ... }@inputs:
@@ -53,6 +59,7 @@
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			niri.nixosModules.niri
+			inputs.fht-compositor.nixosModules.default
 			];
 			specialArgs = {
 			inherit inputs;
