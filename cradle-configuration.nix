@@ -130,12 +130,6 @@
     ];
   };
 
-  programs.fht-compositor = {
-    enable = true;
-    withUWSM = true;
-  };
-
-
   # Automatic garbage collection
   nix.gc = {
     automatic = true;
