@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
 	home = {
 		username = "alter";
@@ -14,7 +16,7 @@
 		  "EDITOR" = "nvim";
 		};
 		settings = {
-			shell = "fish";
+			shell = "nu";
 		};
 	};
 
@@ -24,6 +26,13 @@
 	    volume = 50;
 	    cache = "yes";
 	  };
+	};
+
+	programs.lutris = {
+	  enable = true;
+	  winePackages = with pkgs; [
+	    wine
+	  ];
 	};
 
 	services.swaync.enable = true;
