@@ -40,6 +40,7 @@
     (callPackage ./misc/jellyfin-tui.nix {})
     playerctl
     jellyfin-media-player
+    nushell
   ];
 
   fonts.packages = with pkgs; [
