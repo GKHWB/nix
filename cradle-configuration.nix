@@ -110,6 +110,7 @@
     wineWow64Packages.unstableFull
     winetricks
     libadwaita
+    blockbench
   ];
 
   programs.steam = {

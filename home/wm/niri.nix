@@ -102,6 +102,8 @@
 
 	"Mod+Shift+V".action = toggle-window-floating;
 	"Mod+V".action = switch-focus-between-floating-and-tiling;
+
+	"Mod+Shift+F".action = fullscreen-window;
       };
     };
   };
