@@ -41,6 +41,7 @@
     playerctl
     jellyfin-media-player
     nushell
+    zathura
   ];
 
   fonts.packages = with pkgs; [
