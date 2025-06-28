@@ -23,6 +23,7 @@
     pomodoro-gtk
     cargo
     rustc
+    rustfmt
     clang
     man-pages
     man-pages-posix
