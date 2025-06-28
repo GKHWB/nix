@@ -21,7 +21,6 @@
       pattern = [
       "*.c"
       "*.h"
-      "*.rs"
       ];
     }
     {
@@ -32,6 +31,16 @@
       ];
       pattern = [
       "*.nix"
+      ];
+    }
+    {
+      command = "set softtabstop=4 | set shiftwidth=4 | set expandtab";
+      event = [
+      "BufEnter"
+      "BufWinEnter"
+      ];
+      pattern = [
+      "*.rs"
       ];
     }
     {

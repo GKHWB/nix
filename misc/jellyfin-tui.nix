@@ -6,22 +6,22 @@
   openssl,
   mpv,
   nix-update-script,
-  versionCheckHook,
+  writableTmpDirAsHomeHook,
 }:
 
 rustPlatform.buildRustPackage rec {
   pname = "jellyfin-tui";
-  version = "1.1.3";
+  version = "1.2.1";
 
   src = fetchFromGitHub {
     owner = "dhonus";
     repo = "jellyfin-tui";
     tag = "v${version}";
-    hash = "sha256-zTvycwmVTUK7qP9PacHeREhVk0UJ4fos0Z2OGdWI0Mg=";
+    hash = "sha256-9TSg7J5Pbb2cpL9fEMs5ZJjmA70o8TEmbDkYIK2inTc=";
   };
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-nBtz05c4W5qIiOPfQ+PGy0LVvvXXCFmdfjk2VjBMvnE=";
+  cargoHash = "sha256-dFUUJovJcf5pzH9nta7G+E7hcZTZONLPgQ1HAX4RYrY=";
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [
@@ -29,11 +29,18 @@ rustPlatform.buildRustPackage rec {
     mpv
   ];
 
-  nativeInstallCheckInputs = [
-    versionCheckHook
-  ];
-  versionCheckProgramArg = "--version";
   doInstallCheck = true;
+  installCheckInputs = [
+    writableTmpDirAsHomeHook
+  ];
+  installCheckPhase = ''
+    mkdir -p $HOME/.local/share
+    versionOutput="$($out/bin/jellyfin-tui --version | cut -d " " -f 1,2)"
+    if [[ $versionOutput != *"$version"* ]]; then
+      echo "Did not find $version in $versionOutput"
+      exit 3
+    fi
+  '';
 
   passthru.updateScript = nix-update-script { };
 
