@@ -21,6 +21,16 @@
       pattern = [
       "*.c"
       "*.h"
+      "*.rs"
+      ];
+    }
+    {
+      command = "set softtabstop=2 | set shiftwidth=2 | set expandtab";
+      event = [
+      "BufEnter"
+      "BufWinEnter"
+      ];
+      pattern = [
       "*.nix"
       ];
     }
