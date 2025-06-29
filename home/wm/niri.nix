@@ -2,7 +2,7 @@
   programs.niri = {
     settings = {
       prefer-no-csd = true;
-      input.warp-mouse-to-focus = false;
+      input.warp-mouse-to-focus.enable = false;
       hotkey-overlay.skip-at-startup = true;
       layout = {
         gaps = 16;
