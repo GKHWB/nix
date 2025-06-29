@@ -7,6 +7,7 @@
   mpv,
   nix-update-script,
   writableTmpDirAsHomeHook,
+  versionCheckHook,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -29,18 +30,16 @@ rustPlatform.buildRustPackage rec {
     mpv
   ];
 
-  doInstallCheck = true;
-  installCheckInputs = [
+  nativeInstallCheckInputs = [
     writableTmpDirAsHomeHook
+    versionCheckHook
   ];
+  versionCheckProgramArg = "--version";
+  versionCheckKeepEnvironment = [ "HOME" ];
   installCheckPhase = ''
     mkdir -p $HOME/.local/share
-    versionOutput="$($out/bin/jellyfin-tui --version | cut -d " " -f 1,2)"
-    if [[ $versionOutput != *"$version"* ]]; then
-      echo "Did not find $version in $versionOutput"
-      exit 3
-    fi
   '';
+  doInstallCheck = true;
 
   passthru.updateScript = nix-update-script { };
 
