@@ -4,6 +4,8 @@
   programs.nixvim = {
     enable = true;
 
+    dependencies.imagemagick.enable = true;
+
     autoCmd =
     [
     {
@@ -98,6 +100,8 @@
       enable = true;
     };
 
+    plugins.image.enable = true;
+
     plugins.lsp = {
       enable = true;
 
@@ -135,6 +139,41 @@
     vim-pencil
     wiki-vim
     ];
+
+    extraConfigLua = "require(\"image\").setup({\n
+      backend = \"kitty\",\n
+      processor = \"magick_cli\", -- or \"magick_rock\"\n
+      integrations = {\n
+        markdown = {\n
+          enabled = true,\n
+          clear_in_insert_mode = false,\n
+          download_remote_images = true,\n
+          only_render_image_at_cursor = false,\n
+          only_render_image_at_cursor_mode = \"popup\",\n
+          floating_windows = false, -- if true, images will be rendered in floating markdown windows\n
+          filetypes = { \"markdown\", \"vimwiki\" }, -- markdown extensions (ie. quarto) can go here\n
+        },\n
+        neorg = {\n
+          enabled = true,\n
+          filetypes = { \"norg\" },\n
+        },\n
+        html = {\n
+          enabled = false,\n
+        },\n
+        css = {\n
+          enabled = false,\n
+        },\n
+      },\n
+      max_width = nil,\n
+      max_height = nil,\n
+      max_width_window_percentage = nil,\n
+      max_height_window_percentage = 50,\n
+      window_overlap_clear_enabled = false, -- toggles images when windows are overlapped\n
+      window_overlap_clear_ft_ignore = { \"cmp_menu\", \"cmp_docs\", \"snacks_notif\", \"scrollview\", \"scrollview_sign\" },\n
+      editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus\n
+      tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)\n
+      hijack_file_patterns = { \"*.png\", \"*.jpg\", \"*.jpeg\", \"*.gif\", \"*.webp\", \"*.avif\" }, -- render image files as images when opened\n
+    })";
 
     globals.mapleader = " ";
     keymaps = [
