@@ -38,7 +38,8 @@
     krita
     cava
     wonderdraft
-    (callPackage ./misc/jellyfin-tui.nix {})
+    #(callPackage ./misc/jellyfin-tui.nix {})
+    jellyfin-tui
     playerctl
     jellyfin-media-player
     nushell
