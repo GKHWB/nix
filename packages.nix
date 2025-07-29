@@ -48,6 +48,22 @@
 
   fonts.packages = with pkgs; [
     font-awesome
+    ipafont
+    kochi-substitute
   ];
 
+  fonts.fontconfig.defaultFonts = {
+  monospace = [
+    "DejaVu Sans Mono"
+    "IPAGothic"
+  ];
+  sansSerif = [
+    "DejaVu Sans"
+    "IPAGothic"
+  ];
+  serif = [
+    "DejaVu Serif"
+    "IPAPMincho"
+  ];
+  };
 }

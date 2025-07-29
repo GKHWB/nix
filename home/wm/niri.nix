@@ -73,6 +73,8 @@
         "Mod+M".action = quit;
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
+        "Mod+Shift+C".action = center-column;
+
 	"Mod+S".action = screenshot;
 
 	"Mod+O".action = toggle-overview;
