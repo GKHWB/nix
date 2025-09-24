@@ -41,7 +41,7 @@
     #(callPackage ./misc/jellyfin-tui.nix {})
     jellyfin-tui
     playerctl
-    jellyfin-media-player
+    #jellyfin-media-player
     nushell
     zathura
   ];
