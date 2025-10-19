@@ -11,6 +11,8 @@
     ripgrep
     mpv
     freetube
+    yt-dlp
+    deno
     feh
     git
     killall
