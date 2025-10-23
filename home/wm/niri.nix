@@ -75,7 +75,7 @@
 
         "Mod+Shift+C".action = center-column;
 
-	"Mod+S".action = screenshot;
+	"Mod+S".action.screenshot = [];
 
 	"Mod+O".action = toggle-overview;
 
