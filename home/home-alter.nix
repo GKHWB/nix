@@ -1,6 +1,18 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+
+	imports = [
+		./shells/bundle.nix
+		./wm/bundle.nix
+                inputs.vicinae.homeManagerModules.default
+	];
+
+        services.vicinae = {
+          enable = true;
+          autoStart = true;
+        };
+
 	home = {
 		username = "alter";
 		homeDirectory = "/home/alter";
@@ -37,10 +49,5 @@
 
 	services.swaync.enable = true;
 	gtk.enable = true;
-
-	imports = [
-		./shells/bundle.nix
-		./wm/bundle.nix
-	];
 
 }

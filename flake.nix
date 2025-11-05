@@ -22,6 +22,8 @@
 		};
 
 		niri.url = "github:sodiboo/niri-flake";
+
+                vicinae.url = "github:vicinaehq/vicinae";
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, ... }@inputs:
@@ -49,7 +51,9 @@
 			inherit system;
 			modules = [
 			./cradle-configuration.nix
-			home-manager.nixosModules.home-manager
+			home-manager.nixosModules.home-manager {
+                          home-manager.extraSpecialArgs = { inherit inputs; };
+                        }
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			niri.nixosModules.niri
