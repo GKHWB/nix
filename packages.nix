@@ -45,6 +45,7 @@
     #jellyfin-media-player
     nushell
     zathura
+    libreoffice
   ];
 
   fonts.packages = with pkgs; [
