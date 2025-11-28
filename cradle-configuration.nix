@@ -113,6 +113,7 @@
     winetricks
     libadwaita
     blockbench
+    deadlock-mod-manager
   ];
 
   programs.steam = {
