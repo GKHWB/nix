@@ -114,7 +114,9 @@
     libadwaita
     blockbench
     deadlock-mod-manager
+    prismlauncher
     waywall
+    jdk17
   ];
 
   programs.steam = {
