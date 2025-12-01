@@ -114,6 +114,7 @@
     libadwaita
     blockbench
     deadlock-mod-manager
+    waywall
   ];
 
   programs.steam = {
