@@ -1,6 +1,16 @@
 { config, ... }: {
   programs.niri = {
     settings = {
+      outputs = {
+        "DP-1".position = {
+          x = 1920;
+          y = 0;
+        };
+        "HDMI-A-1".position = {
+          x = 0;
+          y = 310;
+        };
+      };
       prefer-no-csd = true;
       input.warp-mouse-to-focus.enable = false;
       hotkey-overlay.skip-at-startup = true;
