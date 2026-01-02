@@ -11,6 +11,7 @@
     ripgrep
     mpv
     freetube
+    foliate
     yt-dlp
     deno
     feh
