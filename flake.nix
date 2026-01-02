@@ -24,6 +24,8 @@
 		niri.url = "github:sodiboo/niri-flake";
 
                 vicinae.url = "github:vicinaehq/vicinae";
+
+                glide.url = "github:glide-browser/glide.nix";
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, ... }@inputs:

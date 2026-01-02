@@ -54,26 +54,14 @@
       window-rules =
       [
       {
-        matches = [{ app-id = "^FreeTube$"; }];
-	default-column-width = { proportion = 1.; };
-      }
-      {
-        matches = [{ app-id = "^vesktop$"; }];
-	default-column-width = { proportion = 1.; };
-      }
-      {
-        matches = [{ app-id = "^zen-twilight$"; }];
-	default-column-width = { proportion = 2. / 3.; };
-      }
-      {
-        matches = [{ app-id = "^Godot$"; }];
+        matches = [{ app-id = "^FreeTube$"; } { app-id = "^vesktop$"; } { app-id = "^zen-twilight$"; } { app-id = "^Godot$"; } { app-id = "^glide-glide$"; }];
 	default-column-width = { proportion = 1.; };
       }
       ];
       binds = with config.lib.niri.actions; {
         "Mod+Q".action.spawn = ["kitty" "-e" "tmux" "attach"];
         "Mod+D".action.spawn = [ "vicinae" "toggle" ];
-	"Mod+B".action.spawn = "zen";
+	"Mod+B".action.spawn = "glide";
 	"Mod+E".action.spawn = [ "nautilus" ];
 	"Mod+F".action.spawn = "freetube";
 	"Mod+Ctrl+L".action.spawn = "hyprlock";

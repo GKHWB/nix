@@ -18,6 +18,7 @@
     killall
     unzip
     inputs.zen-browser.packages.${pkgs.system}.twilight
+    inputs.glide.packages.${pkgs.system}.glide-browser
     vlc
     obsidian
     racket
