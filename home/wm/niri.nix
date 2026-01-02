@@ -54,7 +54,7 @@
       window-rules =
       [
       {
-        matches = [{ app-id = "^FreeTube$"; } { app-id = "^vesktop$"; } { app-id = "^zen-twilight$"; } { app-id = "^Godot$"; } { app-id = "^glide-glide$"; }];
+        matches = [{ app-id = "^FreeTube$"; } { app-id = "^vesktop$"; } { app-id = "^zen-twilight$"; } { app-id = "^Godot$"; } { app-id = "^glide-glide$"; } { app-id = "^obsidian$"; }];
 	default-column-width = { proportion = 1.; };
       }
       ];
