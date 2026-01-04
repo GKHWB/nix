@@ -123,10 +123,10 @@
     enable = true;
     gamescopeSession.enable = true;
     extraPackages = with pkgs; [
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
+      libXcursor
+      libXi
+      libXinerama
+      libXScrnSaver
       libpng
       libpulseaudio
       libvorbis
@@ -157,7 +157,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
