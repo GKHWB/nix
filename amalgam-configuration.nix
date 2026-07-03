@@ -104,8 +104,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  programs.light.enable = true;
-
   # Automatic garbage collection
   nix.gc = {
     automatic = true;

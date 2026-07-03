@@ -26,9 +26,14 @@
                 vicinae.url = "github:vicinaehq/vicinae";
 
                 glide.url = "github:glide-browser/glide.nix";
+
+                nix-index-database = {
+                  url = "github:nix-community/nix-index-database";
+                  inputs.nixpkgs.follows = "nixpkgs";
+                };
 	};
 
-	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, ... }@inputs:
+	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, nix-index-database, ... }@inputs:
 		let
 			system = "x86_64-linux";
 		in {
@@ -37,10 +42,14 @@
 			inherit system;
 			modules = [
 			./amalgam-configuration.nix
-			home-manager.nixosModules.home-manager
+			home-manager.nixosModules.home-manager {
+			  home-manager.extraSpecialArgs = { inherit inputs; };
+			}
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			niri.nixosModules.niri
+                        nix-index-database.nixosModules.default
+                        { programs.nix-index-database.comma.enable = true; }
 			];
 			specialArgs = {
 			inherit inputs;
@@ -59,6 +68,8 @@
 			stylix.nixosModules.stylix
 			nixvim.nixosModules.nixvim
 			niri.nixosModules.niri
+                        nix-index-database.nixosModules.default
+                        { programs.nix-index-database.comma.enable = true; }
 			];
 			specialArgs = {
 			inherit inputs;

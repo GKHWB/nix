@@ -8,7 +8,7 @@
         };
         "HDMI-A-1".position = {
           x = 0;
-          y = 310;
+          y = 0;
         };
       };
       prefer-no-csd = true;
@@ -31,12 +31,6 @@
       [
       {
         command =
-        [
-        "waybar"
-        ];
-      }
-      {
-        command =
 	[
 	"hyprpaper"
 	];
@@ -46,6 +40,12 @@
 	[
 	"xwayland-satellite"
 	];
+      }
+      {
+        command =
+        [
+        "qs"
+        ];
       }
       ];
       environment = {
@@ -64,6 +64,7 @@
 	"Mod+B".action.spawn = "glide";
 	"Mod+E".action.spawn = [ "nautilus" ];
 	"Mod+F".action.spawn = "freetube";
+        "Mod+Shift+B".action.spawn = ["qs" "ipc" "call" "bar" "showBar"];
 	"Mod+Ctrl+L".action.spawn = "hyprlock";
 	"Mod+Shift+Delete".action.spawn = [ "shutdown" "now" ];
 	"Mod+R".action = switch-preset-column-width;

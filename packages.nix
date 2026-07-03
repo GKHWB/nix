@@ -13,13 +13,12 @@
     freetube
     foliate
     yt-dlp
-    deno
     feh
     git
     killall
     unzip
     inputs.zen-browser.packages.${pkgs.system}.twilight
-    inputs.glide.packages.${pkgs.system}.glide-browser
+    inputs.glide.packages.${pkgs.system}.default
     vlc
     obsidian
     racket
@@ -32,20 +31,16 @@
     man-pages-posix
     tutanota-desktop
     lazygit
-    gparted
     tmux
     xwayland-satellite
     vesktop
     fastfetch
-    cbonsai
     krita
-    cava
     wonderdraft
-    #(callPackage ./misc/jellyfin-tui.nix {})
     jellyfin-tui
     playerctl
-    #jellyfin-media-player
     nushell
+    quickshell
     zathura
     libreoffice
   ];

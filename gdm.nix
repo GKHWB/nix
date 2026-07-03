@@ -1,4 +1,4 @@
 {
   # Enable GDM
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = false;
 }
