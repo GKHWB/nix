@@ -7,6 +7,7 @@
   {
     imports =  [ # Include the results of the hardware scan.
         self.nixosModules.cradleHardware
+        self.modules.nixos.alter
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -77,16 +78,6 @@
   
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
-  
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users."alter" = {
-      isNormalUser = true;
-      description = "alter";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
-      #  thunderbird
-      ];
-    };
   
     # Install firefox.
     programs.firefox.enable = true;
