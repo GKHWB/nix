@@ -15,5 +15,6 @@
     };
     import-tree.url = "github:vic/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 }
