@@ -7,6 +7,7 @@
   {
     imports =  [ # Include the results of the hardware scan.
         self.nixosModules.cradleHardware
+        self.nixosModules.niri
         self.modules.nixos.alter
         self.modules.nixos.audio
     ];
