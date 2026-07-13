@@ -55,6 +55,10 @@
             "-i"
             "${./OccidentalEyeWallpaper.jpg}"
           ]
+          [
+            "${lib.getExe pkgs.vicinae}"
+            "server"
+          ]
         ];
         window-rules = [
           {
@@ -69,11 +73,12 @@
           }
         ];
         binds = {
-          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.tmux} attach";
+          #ToDo configure tmux so that kitty can open with -e tmux attach
+          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty}";
           "Mod+D".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
           #ToDo Glide stuff
           "Mod+E".spawn-sh = "nautilus";
-          "Mod+F".spawn-sh = "freetube";
+          "Mod+F".spawn-sh = "${lib.getExe pkgs.freetube}";
           #ToDo quickshell stuff
           "Mod+Ctrl+L".spawn-sh = lib.getExe pkgs.hyprlock;
           "Mod+Shift+Delete".spawn-sh = "shutdown now";
