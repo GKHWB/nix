@@ -6,13 +6,13 @@
   {
     programs.niri = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
   };
 
   perSystem = { pkgs, lib, ... }: {
 
-    packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
+    packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
 
       inherit pkgs;
 
@@ -74,10 +74,10 @@
         ];
         binds = {
           #ToDo configure tmux so that kitty can open with -e tmux attach
-          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty}";
+          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.tmux}";
           "Mod+D".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
           #ToDo Glide stuff
-          "Mod+E".spawn-sh = "nautilus";
+          "Mod+E".spawn-sh = "${lib.getExe pkgs.nautilus}";
           "Mod+F".spawn-sh = "${lib.getExe pkgs.freetube}";
           #ToDo quickshell stuff
           "Mod+Ctrl+L".spawn-sh = lib.getExe pkgs.hyprlock;
