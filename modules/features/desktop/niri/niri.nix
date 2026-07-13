@@ -59,6 +59,8 @@
             "${lib.getExe pkgs.vicinae}"
             "server"
           ]
+          "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.quickshell}"
+
         ];
         window-rules = [
           {
@@ -80,6 +82,7 @@
           "Mod+E".spawn-sh = "${lib.getExe pkgs.nautilus}";
           "Mod+F".spawn-sh = "${lib.getExe pkgs.freetube}";
           #ToDo quickshell stuff
+          "Mod+Shift+B".spawn-sh = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.quickshell} ipc call bar showBar";
           "Mod+Ctrl+L".spawn-sh = lib.getExe pkgs.hyprlock;
           "Mod+Shift+Delete".spawn-sh = "shutdown now";
           "Mod+R".switch-preset-column-width = { };
