@@ -76,7 +76,7 @@
         ];
         binds = {
           #ToDo configure tmux so that kitty can open with -e tmux attach
-          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.tmux}";
+          "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty} -e ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.tmux}";
           "Mod+D".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
           #ToDo Glide stuff
           "Mod+E".spawn-sh = "${lib.getExe pkgs.nautilus}";
