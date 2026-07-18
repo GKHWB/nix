@@ -10,6 +10,7 @@
         self.modules.nixos.alter
         self.modules.nixos.desktop
         self.modules.nixos.obs
+        self.modules.nixos.searxng
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
