@@ -29,7 +29,7 @@ WrapperRectangle {
 					id: icon
 
 					implicitSize: size
-					source: (modelData.title == "Input Method") ? "file:/home/alter/nix/home/assets/inputMethodIcon.png" : modelData.icon
+					source: (modelData.title == "Input Method") ? "file:/home/alter/nix/modules/features/desktop/quickshell/quickshell-config/inputMethodIcon.png" : modelData.icon
 					mipmap: true
 				}
 
