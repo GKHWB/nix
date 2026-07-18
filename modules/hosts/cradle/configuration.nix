@@ -9,6 +9,7 @@
         self.nixosModules.cradleHardware
         self.modules.nixos.alter
         self.modules.nixos.desktop
+        self.modules.nixos.obs
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
