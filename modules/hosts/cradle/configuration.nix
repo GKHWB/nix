@@ -11,6 +11,7 @@
         self.modules.nixos.desktop
         self.modules.nixos.obs
         self.modules.nixos.searxng
+        self.modules.nixos.steam
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
