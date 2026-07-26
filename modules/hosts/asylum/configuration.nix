@@ -6,6 +6,7 @@
     imports =  [
         self.nixosModules.asylumHardware
         self.modules.nixos.alter
+        self.modules.nixos.cliTools
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
