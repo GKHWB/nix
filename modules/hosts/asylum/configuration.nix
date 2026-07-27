@@ -61,7 +61,42 @@
         PasswordAuthentication = false;
       }; 
     };
-  
+
+    #Wireguard setup
+    networking.wireguard = {
+      enable = true;
+      interfaces = {
+        wg0 = {
+          ips = [ "192.168.2.1/24" ];
+          listenPort = 5553;
+          privateKeyFile = "/mnt/wg-private";
+          peers = [
+            {
+              name = "phone";
+              publicKey = "vocKGYkTMbmFZ1wda5G3lOAgFtZI3LDuTMA6b7lUuTY=";
+              allowedIPs = [
+                "192.168.2.2/32"
+              ];
+            }
+          ];
+          postSetup = ''
+            ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 192.168.1.1/24 -o eno4 -j MASQUERADE
+          '';
+          postShutdown = ''
+            ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 192.168.1.1/24 -o eno4 -j MASQUERADE
+          '';
+        };
+      };
+    };
+
+    networking.nat = {
+      enable = true;
+      externalInterface = "eno4";
+      internalInterfaces = [ "wg0" ];
+    };
+
     # Open ports in the firewall.
     networking.firewall.allowedTCPPorts =
     [
@@ -69,8 +104,14 @@
       8082
       42920
       42921
+      8096
     ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
+
+    networking.firewall.allowedUDPPorts =
+    [
+      5553
+    ];
+
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
   
