@@ -106,7 +106,7 @@
     };
 
     # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts =
+    networking.firewall.interfaces.eno4.allowedTCPPorts =
     [
       8081
       8082
@@ -115,9 +115,14 @@
       8096
     ];
 
-    networking.firewall.allowedUDPPorts =
+    networking.firewall.interfaces.eno4.allowedUDPPorts =
     [
       5553
+    ];
+
+    networking.firewall.trustedInterfaces = 
+    [
+      "wg0"
     ];
 
     # Or disable the firewall altogether.
