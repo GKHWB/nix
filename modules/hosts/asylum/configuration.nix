@@ -62,6 +62,14 @@
       }; 
     };
 
+    #Jellyfin
+    services.jellyfin = {
+      enable = true;
+      cacheDir = "/mnt/jellyfin/cache";
+      configDir = "/mnt/jellyfin/config";
+      dataDir = "/mnt/jellyfin/data";
+    };
+
     #Wireguard setup
     networking.wireguard = {
       enable = true;
