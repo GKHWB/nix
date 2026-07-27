@@ -51,6 +51,7 @@
     };
   
     environment.systemPackages = with pkgs; [
+      qbittorrent-nox
     ];
   
     # Enable the OpenSSH daemon.
@@ -62,7 +63,13 @@
     };
   
     # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
+    networking.firewall.allowedTCPPorts =
+    [
+      8081
+      8082
+      42920
+      42921
+    ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
