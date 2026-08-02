@@ -139,6 +139,29 @@
     ];
   };
 
+  #Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "alter";
+    settings = {
+      devices = {
+        asylum = {
+          addresses = [
+            "tcp://192.168.1.24:22000"
+          ];
+          id = "GNGDMPN-ZFCI53D-7DWNQ2A-GKFVDN6-VVDADY4-G4GQZLL-ACFJV7J-7NC7GAN";
+        };
+      };
+      folders = {
+        "/home/alter/Notes" = {
+          id = "Notes";
+          devices = [ "asylum" ];
+        };
+      };
+    };
+  };
+
   # Automatic garbage collection
   nix.gc = {
     automatic = true;
