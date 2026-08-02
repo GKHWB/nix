@@ -31,9 +31,11 @@
                   url = "github:nix-community/nix-index-database";
                   inputs.nixpkgs.follows = "nixpkgs";
                 };
+
+                agenix.url = "github:ryantm/agenix";
 	};
 
-	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, nix-index-database, ... }@inputs:
+	outputs = { nixpkgs, home-manager, stylix, nixvim, niri, nix-index-database, agenix, ... }@inputs:
 		let
 			system = "x86_64-linux";
 		in {
@@ -50,6 +52,7 @@
 			niri.nixosModules.niri
                         nix-index-database.nixosModules.default
                         { programs.nix-index-database.comma.enable = true; }
+                        agenix.nixosModules.default
 			];
 			specialArgs = {
 			inherit inputs;

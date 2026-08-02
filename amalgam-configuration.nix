@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -104,6 +104,40 @@
   environment.systemPackages = with pkgs; [
   ];
 
+  age.secrets.wireguardEndpoint = {
+    file = ./secrets/wireguard-endpoint.age;
+  };
+
+  system.activationScripts."wireguard-endpoint" = ''
+    echo $(cat ${config.age.secrets.wireguardEndpoint.path}) > /etc/wireguard-endpoint
+  '';
+
+  networking.wireguard = {
+    enable = true;
+    interfaces = {
+      wg0 = {
+        ips = [ "192.168.2.3/32" ];
+        listenPort = 5553;
+        privateKeyFile = "/home/alter/wireguard/wg-private";
+        peers = [
+          {
+            name = "asylum";
+            publicKey = "CcCv3t8o9S4VphF0Mu7AyxOjMeDp8SdQnw0xA+gTGlo=";
+            allowedIPs = [
+              "0.0.0.0/0"
+            ];
+            endpoint = "$(${pkgs.coreutils}/bin/cat /etc/wireguard-endpoint):5553";
+          }
+        ];
+        postSetup = "${pkgs.iproute2}/bin/ip route add $(${pkgs.coreutils}/bin/cat /etc/wireguard-endpoint) via $(${pkgs.iproute2}/bin/ip route show 0.0.0.0/0 | ${pkgs.gawk}/bin/awk '{print $3}')";
+        postShutdown = "${pkgs.iproute2}/bin/ip route del $(${pkgs.coreutils}/bin/cat /etc/wireguard-endpoint) via $(${pkgs.iproute2}/bin/ip route show 0.0.0.0/0 | ${pkgs.gawk}/bin/awk '{print $3}')";
+      };
+    };
+  };
+
+  #networking.firewall.allowedUDPPorts = [ 5553 ];
+  #networking.firewall.checkReversePath = false;
+
   # Automatic garbage collection
   nix.gc = {
     automatic = true;
@@ -122,7 +156,12 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
