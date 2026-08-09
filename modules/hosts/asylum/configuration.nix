@@ -86,6 +86,13 @@
                 "192.168.2.2/32"
               ];
             }
+            {
+              name = "amalgam";
+              publicKey = "F7v1mRB65a1NFBAuV4CKxljRhx8Y/bVp/uL2zfF2lAY=";
+              allowedIPs = [
+                "192.168.2.3/32"
+              ];
+            }
           ];
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
@@ -99,6 +106,29 @@
       };
     };
 
+    #Syncthing
+    services.syncthing = {
+      enable = true;
+      user = "alter";
+      guiAddress = "0.0.0.0:8384";
+      settings = {
+        devices = {
+          cradle = {
+            addresses = [
+              "tcp://192.168.1.16:22000"
+            ];
+            id = "YGMWRZR-TZTLIR3-USGD363-Y5FQJ3T-ZUIGN2R-TPUODDB-DGWKEWL-6TYPBQJ";
+          };
+        };
+        folders = {
+          "/mnt/syncthing/Notes" = {
+            id = "Notes";
+            devices = [ "cradle" ];
+          };
+        };
+      };
+    };
+
     networking.nat = {
       enable = true;
       externalInterface = "eno4";
@@ -106,6 +136,7 @@
     };
 
     # Open ports in the firewall.
+
     networking.firewall.interfaces.eno4.allowedTCPPorts =
     [
       8081
@@ -113,11 +144,14 @@
       42920
       42921
       8096
+      22000
+      8384
     ];
 
     networking.firewall.interfaces.eno4.allowedUDPPorts =
     [
       5553
+      22000
     ];
 
     networking.firewall.trustedInterfaces = 
