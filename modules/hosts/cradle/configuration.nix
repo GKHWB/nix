@@ -9,10 +9,10 @@
         self.nixosModules.cradleHardware
         self.modules.nixos.alter
         self.modules.nixos.desktop
-        self.modules.nixos.obs
         self.modules.nixos.searxng
         self.modules.nixos.steam
         self.modules.nixos.cliTools
+        self.modules.nixos.videosuite
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -74,8 +74,13 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     ];
-  
-    # List services that you want to enable:
+
+    # Add cuda to obs
+    programs.obs-studio = {
+      package = (pkgs.obs-studio.override {
+          cudaSupport = true;
+        });
+    };
   
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
