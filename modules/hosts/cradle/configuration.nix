@@ -13,6 +13,7 @@
         self.modules.nixos.steam
         self.modules.nixos.cliTools
         self.modules.nixos.videosuite
+        self.modules.nixos.glide
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];

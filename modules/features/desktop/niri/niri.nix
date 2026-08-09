@@ -79,9 +79,9 @@
           "Mod+Q".spawn-sh = "${lib.getExe pkgs.kitty} -e ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.tmux}";
           "Mod+D".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
           #ToDo Glide stuff
+          "Mod+B".spawn-sh = "${lib.getExe self.inputs.glide.packages.${pkgs.stdenv.hostPlatform.system}.default}";
           "Mod+E".spawn-sh = "${lib.getExe pkgs.nautilus}";
           "Mod+F".spawn-sh = "${lib.getExe pkgs.freetube}";
-          #ToDo quickshell stuff
           "Mod+Shift+B".spawn-sh = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.quickshell} ipc call bar showBar";
           "Mod+Ctrl+L".spawn-sh = lib.getExe pkgs.hyprlock;
           "Mod+Shift+Delete".spawn-sh = "shutdown now";
