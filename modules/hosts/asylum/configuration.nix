@@ -103,6 +103,20 @@
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 192.168.1.1/24 -o eno4 -j MASQUERADE
           '';
         };
+        wg1 = {
+          ips = [ "192.168.3.1/24" ];
+          listenPort = 5554;
+          privateKeyFile = "/mnt/wg-private";
+          peers = [
+            {
+              name = "cradle";
+              publicKey = "KbtqAYQz0YMBEl4DeNNCo/ALm+pAX6sp7unjMzwnqUk=";
+              allowedIPs = [
+                "192.168.3.2/32"
+              ];
+            }
+          ];
+        };
       };
     };
 
@@ -151,12 +165,14 @@
     networking.firewall.interfaces.eno4.allowedUDPPorts =
     [
       5553
+      5554
       22000
     ];
 
     networking.firewall.trustedInterfaces = 
     [
       "wg0"
+      "wg1"
     ];
 
     # Or disable the firewall altogether.

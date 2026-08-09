@@ -85,12 +85,39 @@
   
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
+
+    age.secrets.wireguardEndpoint = {
+      file = "${self.inputs.secrets}/wireguard-endpoint.age";
+    };
+
+    system.activationScripts."wireguard-endpoint" = ''
+      echo $(cat ${config.age.secrets.wireguardEndpoint.path}) > /etc/wireguard-endpoint
+    '';
   
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+    networking.wireguard = {
+      enable = true;
+      interfaces = {
+        wg0 = {
+          ips = [ "192.168.3.2/32" ];
+          listenPort = 5553;
+          privateKeyFile = "/home/alter/wireguard/wg-private";
+          peers = [
+            {
+              name = "asylum";
+              publicKey = "CcCv3t8o9S4VphF0Mu7AyxOjMeDp8SdQnw0xA+gTGlo=";
+              allowedIPs = [
+                "192.168.3.1/32"
+              ];
+              endpoint = "$(${pkgs.coreutils}/bin/cat /etc/wireguard-endpoint):5554";
+            }
+          ];
+        };
+      };
+    };
+
+    networking.firewall.allowedUDPPorts = [
+      5554
+    ];
   
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
