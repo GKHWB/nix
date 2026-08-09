@@ -14,6 +14,7 @@
         self.modules.nixos.cliTools
         self.modules.nixos.videosuite
         self.modules.nixos.glide
+        self.modules.nixos.zen-browser
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
