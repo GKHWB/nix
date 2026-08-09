@@ -11,6 +11,10 @@
       tealdeer
       self.packages.${pkgs.stdenv.hostPlatform.system}.tmux
       dust
+      unzip
+      htop
+      man-pages
+      man-pages-posix
     ];
   };
 }
