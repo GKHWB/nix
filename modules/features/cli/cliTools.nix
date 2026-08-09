@@ -10,6 +10,7 @@
       fd
       tealdeer
       self.packages.${pkgs.stdenv.hostPlatform.system}.tmux
+      dust
     ];
   };
 }
