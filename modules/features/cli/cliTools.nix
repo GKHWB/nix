@@ -2,10 +2,13 @@
 
 {
   flake.modules.nixos.cliTools = { pkgs, ... }: {
+    imports = [
+      self.modules.nixos.nixvim
+    ];
+
     environment.systemPackages = with pkgs; [
       git
       lazygit
-      vim
       ripgrep
       fd
       tealdeer

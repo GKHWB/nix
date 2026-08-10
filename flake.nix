@@ -20,6 +20,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixvim.url = "github:nix-community/nixvim";
     secrets = {
       url = "path:./secrets";
       flake = false;
