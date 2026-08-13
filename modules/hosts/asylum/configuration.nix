@@ -7,6 +7,7 @@
         self.nixosModules.asylumHardware
         self.modules.nixos.alter
         self.modules.nixos.cliTools
+        self.modules.nixos.secrets
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -70,6 +71,10 @@
       dataDir = "/mnt/jellyfin/data";
     };
 
+    age.secrets.wgPrivateKey = {
+      file = "${self.inputs.secrets}/asylum-wg-key.age";
+    };
+
     #Wireguard setup
     networking.wireguard = {
       enable = true;
@@ -77,7 +82,7 @@
         wg0 = {
           ips = [ "192.168.2.1/24" ];
           listenPort = 5553;
-          privateKeyFile = "/mnt/wg-private";
+          privateKeyFile = config.age.secrets.wgPrivateKey.path;
           peers = [
             {
               name = "phone";
@@ -106,7 +111,7 @@
         wg1 = {
           ips = [ "192.168.3.1/24" ];
           listenPort = 5554;
-          privateKeyFile = "/mnt/wg-private";
+          privateKeyFile = config.age.secrets.wgPrivateKey.path;
           peers = [
             {
               name = "cradle";

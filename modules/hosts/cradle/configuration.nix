@@ -17,6 +17,7 @@
         self.modules.nixos.zen-browser
         self.modules.nixos.secrets
         self.modules.nixos.artPrograms
+        self.modules.nixos.secrets
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -86,8 +87,13 @@
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
 
-    age.secrets.wireguardEndpoint = {
-      file = "${self.inputs.secrets}/wireguard-endpoint.age";
+    age.secrets = {
+      wireguardEndpoint = {
+        file = "${self.inputs.secrets}/wireguard-endpoint.age";
+      };
+      wgPrivateKey = {
+        file = "${self.inputs.secrets}/cradle-wg-key.age";
+      };
     };
 
     system.activationScripts."wireguard-endpoint" = ''
@@ -100,7 +106,7 @@
         wg0 = {
           ips = [ "192.168.3.2/32" ];
           listenPort = 5553;
-          privateKeyFile = "/home/alter/wireguard/wg-private";
+          privateKeyFile = config.age.secrets.wgPrivateKey.path;
           peers = [
             {
               name = "asylum";
