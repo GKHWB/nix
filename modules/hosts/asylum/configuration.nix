@@ -1,7 +1,9 @@
 { self, inputs, ...}: {
 
   flake.nixosModules.asylumConfiguration = { config, pkgs, ... }:
-
+  let
+    wgKeys = import "${self.inputs.attrsets}/wgPublicKeys.nix";
+  in
   {
     imports =  [
         self.nixosModules.asylumHardware
@@ -76,7 +78,7 @@
     };
 
     #Wireguard setup
-    networking.wireguard = {
+    networking.wireguard = with wgKeys; {
       enable = true;
       interfaces = {
         wg0 = {
@@ -115,7 +117,7 @@
           peers = [
             {
               name = "cradle";
-              publicKey = "KbtqAYQz0YMBEl4DeNNCo/ALm+pAX6sp7unjMzwnqUk=";
+              publicKey = cradleKey;
               allowedIPs = [
                 "192.168.3.2/32"
               ];

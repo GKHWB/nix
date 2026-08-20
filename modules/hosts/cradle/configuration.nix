@@ -4,6 +4,9 @@
 
   flake.nixosModules.cradleConfiguration = { config, pkgs, ... }:
 
+  let
+    wgKeys = import "${self.inputs.attrsets}/wgPublicKeys.nix";
+  in
   {
     imports =  [
         self.nixosModules.cradleHardware
@@ -100,7 +103,7 @@
       echo $(cat ${config.age.secrets.wireguardEndpoint.path}) > /etc/wireguard-endpoint
     '';
   
-    networking.wireguard = {
+    networking.wireguard = with wgKeys; {
       enable = true;
       interfaces = {
         wg0 = {
@@ -110,7 +113,7 @@
           peers = [
             {
               name = "asylum";
-              publicKey = "CcCv3t8o9S4VphF0Mu7AyxOjMeDp8SdQnw0xA+gTGlo=";
+              publicKey = asylumKey;
               allowedIPs = [
                 "192.168.3.1/32"
               ];

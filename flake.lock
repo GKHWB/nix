@@ -23,6 +23,18 @@
         "type": "github"
       }
     },
+    "attrsets": {
+      "flake": false,
+      "locked": {
+        "path": "./attrsets",
+        "type": "path"
+      },
+      "original": {
+        "path": "./attrsets",
+        "type": "path"
+      },
+      "parent": []
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -305,6 +317,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "attrsets": "attrsets",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "glide": "glide",
